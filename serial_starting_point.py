@@ -7,7 +7,7 @@ elif case == 2:
     
 import serial
 ser = serial.Serial(portname, 115200, timeout=1)
-ser.open()
+#ser.open()
 
 ser.flushInput()
 ser.flushOutput()
@@ -25,11 +25,12 @@ def Read_Line(ser):
 
 # USB serial causes Arduino to reboot and print welcome message
 if case == 2:
-    debug_line = serial_utils.Read_Line(ser)
+    debug_line = Read_Line(ser)
     line_str = ''.join(debug_line)
 
-ser.write(chr("1"))
+ser.write("1")
 
-response = serial_utils.Read_Line(ser)
+response_list = Read_Line(ser)
+response = ''.join(response_list)
 
 ser.close()
