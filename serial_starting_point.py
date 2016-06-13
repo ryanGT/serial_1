@@ -28,8 +28,8 @@ if case == 2:
     debug_line = serial_utils.Read_Line(ser)
     line_str = ''.join(debug_line)
 
+ser.write(chr("1"))
 
-serial_utils.WriteByte(ser, "1")
 response = serial_utils.Read_Line(ser)
 
 ser.close()
