@@ -42,6 +42,6 @@ resp1 = send_and_listen(chr(1))
 resp48 = send_and_listen(chr(48))
 resp48b = send_and_listen("0")
 resp49 = send_and_listen(chr(49))
-resp49b = send_and_listen(chr("1"))
+resp49b = send_and_listen("1")
 
 ser.close()
