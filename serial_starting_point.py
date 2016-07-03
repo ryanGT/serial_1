@@ -24,13 +24,19 @@ def Read_Line(ser):
     return out
 
 # USB serial causes Arduino to reboot and print welcome message
-if case == 2:
-    debug_line = Read_Line(ser)
-    line_str = ''.join(debug_line)
+## if case == 2:
+##     debug_line = Read_Line(ser)
+##     line_str = ''.join(debug_line)
 
-ser.write("1")
 
-response_list = Read_Line(ser)
-response = ''.join(response_list)
+def send_and_listen(send_me):
+    ser.write(send_me)
+    response_list = Read_Line(ser)
+    response = ''.join(response_list)
+    return response
+
+resp1 = send_and_listen(chr(1))
+resp48 = send_and_listen(chr(48))
+resp49 = send_and_listen(chr(49))
 
 ser.close()
