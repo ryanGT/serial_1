@@ -6,6 +6,7 @@ elif case == 2:
     portname = '/dev/ttyACM0'
     
 import serial
+import time
 ser = serial.Serial(portname, 115200, timeout=1)
 #ser.open()
 
@@ -35,10 +36,12 @@ def send_and_listen(send_me):
     response = ''.join(response_list)
     return response
 
+time.sleep(2)
+
 resp1 = send_and_listen(chr(1))
 resp48 = send_and_listen(chr(48))
 resp48b = send_and_listen("0")
 resp49 = send_and_listen(chr(49))
-resp49b = send_and_listen(chr("1"))
+resp49b = send_and_listen("1")
 
 ser.close()
