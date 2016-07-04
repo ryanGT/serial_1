@@ -2,6 +2,10 @@
 portname = '/dev/ttyACM0'
     
 import serial
+import time
+from numpy import *
+from matplotlib.pyplot import *
+
 ser = serial.Serial(portname, 115200, timeout=1)
 #ser.open()
 
@@ -31,7 +35,7 @@ msg = send_and_listen("0")
 print(msg)
 
 
-nvect = arange(255)
+nvect = arange(256)
 resp_list = []
 
 case = 2
@@ -52,4 +56,14 @@ for n in nvect:
     resp_list.append(resp)
 
 
+resp_int_list = [ord(item) for item in resp_list]
+
+resp_array = array(resp_int_list)
+
+figure(1)
+clf()
+plot(nvect, resp_array)
+
+
 ser.close()
+show()
