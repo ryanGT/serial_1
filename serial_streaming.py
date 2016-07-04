@@ -26,6 +26,7 @@ def send_and_listen(send_me):
     response = ''.join(response_list)
     return response
 
+time.sleep(2)
 msg = send_and_listen("0")
 print(msg)
 
